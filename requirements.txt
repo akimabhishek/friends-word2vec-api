@@ -1,4 +1,4 @@
 fastapi
 uvicorn
-gensim
+gensim==4.2.0
 nltk
