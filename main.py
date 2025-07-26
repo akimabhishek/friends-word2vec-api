@@ -2,8 +2,7 @@ import pandas as pd
 import difflib
 import os
 import requests
-
-
+import gensim
 from fastapi import FastAPI, HTTPException
 from gensim.models import Word2Vec
 
