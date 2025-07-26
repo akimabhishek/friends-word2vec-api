@@ -28,7 +28,23 @@ from fastapi import FastAPI, HTTPException
 from gensim.models import Word2Vec
 
 app = FastAPI()
-model = Word2Vec.load("friends_word2vec_with_phrases.model")
+# model = Word2Vec.load("friends_word2vec_with_phrases.model")
+
+MODEL_PATH = "friends_word2vec_with_phrases.model"
+MODEL_URL = "https://huggingface.co/akimabhi/friends-word2vec/resolve/main/friends_word2vec_with_phrases.model"
+
+# Step 1: Download model if not already present
+if not os.path.exists(MODEL_PATH):
+    print("📥 Downloading model from Hugging Face...")
+    response = requests.get(MODEL_URL)
+    with open(MODEL_PATH, "wb") as f:
+        f.write(response.content)
+    print("✅ Model downloaded!")
+
+# Step 2: Load the model
+print("📦 Loading Word2Vec model...")
+model = gensim.models.Word2Vec.load(MODEL_PATH)
+print("✅ Model loaded!")
 
 @app.get("/")
 def root():
