@@ -1,6 +1,7 @@
 import pandas as pd
 import difflib
 import os
+import requests
 
 
 from fastapi import FastAPI, HTTPException
