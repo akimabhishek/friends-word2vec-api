@@ -2,3 +2,4 @@ fastapi
 uvicorn
 gensim
 nltk
+pandas
